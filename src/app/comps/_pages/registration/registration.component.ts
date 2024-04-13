@@ -36,6 +36,10 @@ export class RegistrationComponent implements AfterViewInit {
     ngAfterViewInit() {
     }
 
+    register() {
+        // TODO
+    }
+
     highlightRed(el: any) {
         el.style.background = 'var(--red)';
         setTimeout(()=>{

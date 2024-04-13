@@ -64,7 +64,7 @@
             <button id="next-make-meeting-btn" (click)="choosePage(chosen_page + 1)" *ngIf="chosen_page !== max_page"
                     type="button" class="btn next-btn" #next_reg_btn>
                 Далее <img class="arrow-img" alt="arrow image" src="assets/arrow.svg"></button>
-            <button id="finish-btn" (click)="choosePage(chosen_page + 1)" *ngIf="chosen_page === max_page" type="button"
+            <button id="finish-btn" (click)="register()" *ngIf="chosen_page === max_page" type="button"
                     class="btn finish-btn" #finish_reg_btn>
                 Завершить
             </button>
