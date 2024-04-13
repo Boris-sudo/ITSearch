@@ -29,7 +29,7 @@ export class RegistrationComponent implements AfterViewInit {
     public age: string = '';
 
     constructor(
-        private router: RoutingService
+        public router: RoutingService
     ) {
     }
 
