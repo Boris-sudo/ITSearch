@@ -13,4 +13,7 @@ import {SlideMenuComponent} from "./comps/_models/slide-menu/slide-menu.componen
 export class AppComponent {
     title = 'ITSearch';
 
+    constructor(
+    ) {
+    }
 }

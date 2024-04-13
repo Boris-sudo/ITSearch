@@ -239,6 +239,15 @@
 
 .img-rev { transform: rotate(180deg); }
 
+.bottom-text {
+    margin-top: 20px;
+}
+
+.bottom-text > a {
+    color: var(--blue);
+    cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
     .main-content {
         border-radius: 0;

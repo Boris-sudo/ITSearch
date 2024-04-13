@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {RoutingService} from "../../../services/routing.service";
 
 @Component({
     selector: 'app-registration',
@@ -27,7 +28,9 @@ export class RegistrationComponent implements AfterViewInit {
     public name: string = '';
     public age: string = '';
 
-    constructor() {
+    constructor(
+        private router: RoutingService
+    ) {
     }
 
     ngAfterViewInit() {
