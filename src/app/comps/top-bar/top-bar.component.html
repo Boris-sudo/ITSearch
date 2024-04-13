@@ -1,0 +1,19 @@
+<main class="main">
+    <div (click)="router.navigate('')" class="logo">
+        <img src="assets/logo.svg">
+    </div>
+
+    <div class="nav-bar-container">
+        <nav class="nav-bar">
+            <div class="link" [class.active_link]="router.getRoute() === route.url" (click)="router.navigate(route.url)" *ngFor="let route of router.TopBarRoutes">
+                <p class="link-text">{{route.name}}</p>
+            </div>
+        </nav>
+
+        <div (click)="InteractSlideMenu()" class="hamburger">
+            <div class="line" #close_line></div>
+            <div class="line"></div>
+            <div class="line" #close_line></div>
+        </div>
+    </div>
+</main>

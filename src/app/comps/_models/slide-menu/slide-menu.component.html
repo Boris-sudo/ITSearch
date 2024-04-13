@@ -1,0 +1,7 @@
+<main class="main" id="slide-menu-main">
+  <div class="content">
+    <div class="sb-link" [class.active-link]="router.getRoute() === route.url" (click)="router.navigate(route.url)" *ngFor="let route of router.TopBarRoutes">
+      <p>{{route.name}}</p>
+    </div>
+  </div>
+</main>

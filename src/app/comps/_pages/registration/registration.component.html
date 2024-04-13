@@ -1,0 +1,30 @@
+<div class="steps-container">
+    <div class="steps">
+        <ul>
+            <li [class.active]="choosen_page >= 1"><span>1</span></li>
+            <li [class.active]="choosen_page >= 2"><span>2</span></li>
+            <li [class.active]="choosen_page >= 3"><span>3</span></li>
+            <li [class.active]="choosen_page >= 4"><span>4</span></li>
+            <li [class.active]="choosen_page >= 5"><span>5</span></li>
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+
+    <form id="form-roller" class="form-container">
+        <div class="form-roller">
+            <div id="form-card1" class="create-form">
+
+            </div>
+        </div>
+    </form>
+
+    <div class="buttons-container">
+        <button id="prev-make-meeting-btn" (click)="choosePage(choosen_page - 1)" type="button" class="btn prev-btn"><img
+                class="arrow-img img-rev" alt="arrow image" src="assets/arrow.svg"> Назад
+        </button>
+        <button id="next-make-meeting-btn" (click)="choosePage(choosen_page + 1)" type="button" class="btn next-btn">
+            Далее <img class="arrow-img" alt="arrow image" src="assets/arrow.svg"></button>
+    </div>
+</div>
