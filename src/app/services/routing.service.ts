@@ -9,7 +9,7 @@ import {SlideMenuComponent} from "../comps/_models/slide-menu/slide-menu.compone
 export class RoutingService {
   public readonly TopBarRoutes: TobBarRouteModel[] = [
     { name: 'shorts', url: '' },
-    { name: 'search', url: 'problems' },
+    { name: 'search', url: 'search' },
   ]
 
   constructor(

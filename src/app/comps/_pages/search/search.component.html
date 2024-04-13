@@ -1,1 +1,11 @@
-<p>search works!</p>
+<div class="top-part"></div>
+
+<div class="content">
+    <div class="internships-container">
+        <div class="internship-container" *ngFor="let internship of internships" #internship>
+            <app-internship-card [internship]="internship"></app-internship-card>
+        </div>
+    </div>
+
+    <app-search-loader></app-search-loader>
+</div>

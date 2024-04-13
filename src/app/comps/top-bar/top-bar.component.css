@@ -33,6 +33,8 @@
 
 .link {cursor: pointer;}
 
+.link > p { transition-duration: var(--fast-transition-time); }
+
 .active_link > p {
     color: var(--blue);
 }
