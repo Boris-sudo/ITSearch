@@ -1,41 +1,66 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {NgForOf, NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
     selector: 'app-registration',
     standalone: true,
-    imports: [],
+    imports: [
+        NgForOf,
+        NgIf,
+        FormsModule
+    ],
     templateUrl: './registration.component.html',
     styleUrl: './registration.component.css'
 })
-export class RegistrationComponent {
-    public choosen_page: number = 1;
+export class RegistrationComponent implements AfterViewInit {
+    public chosen_page: number = 1;
+    public readonly max_page: number = 5;
 
-    highlightRed(el: HTMLElement) {
-        el.style.background = 'rgb(var(--red))';
+    @ViewChild('finish_reg_btn') private finish_registration_button: any;
+    @ViewChild('next_reg_btn') private next_registration_button: any;
+    @ViewChild('prev_reg_btn') private prev_registration_button: any;
+
+    public email: string = '';
+    public password1: string = '';
+    public password2: string = '';
+    public name: string = '';
+    public age: string = '';
+
+    constructor() {
+    }
+
+    ngAfterViewInit() {
+    }
+
+    highlightRed(el: any) {
+        el.style.background = 'var(--red)';
         setTimeout(()=>{
-            el.style.background = 'rgb(var(--yellow))';
+            el.style.background = '';
         }, 300);
     }
 
     choosePage(page: number) {
         let highlight = () => {
-            if (page < this.choosen_page) this.highlightRed(document.getElementById('prev-make-meeting-btn')!);
-            else this.highlightRed(document.getElementById('next-make-meeting-btn')!);
+            if (page === this.max_page) this.highlightRed(this.finish_registration_button.nativeElement);
+            else if (page < this.chosen_page) this.highlightRed(this.prev_registration_button.nativeElement);
+            else this.highlightRed(this.next_registration_button.nativeElement);
         };
-        if (page > this.choosen_page) {
-            if (this.choosen_page === 1) {
+        if (page > this.chosen_page) {
+            if (this.chosen_page === 1 && (this.password2 !== this.password1 || this.password1.length < 8 || this.email === '')) {
                 highlight(); return;
-            } else if (this.choosen_page === 2) {
+            } else if (this.chosen_page === 2 && (this.name === '' || this.age === '')) {
                 highlight(); return;
-            } else if (this.choosen_page === 3) {
+            } else if (this.chosen_page === 3 && (false)) {
                 highlight(); return;
             }
         }
+        console.log(1);
 
-        if (page <= 0 || page > 5) {
+        if (page <= 0 || page > this.max_page) {
             highlight(); return;
         }
-        this.choosen_page = page;
+        this.chosen_page = page;
 
         const card = document.getElementById('form-card' + page)!;
         const roller = document.getElementById('form-roller')!;

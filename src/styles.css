@@ -45,6 +45,14 @@ input, button, select {
     outline:        0;
 }
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white);
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+
+}
+
 img {
     -moz-user-select:    none;
     -webkit-user-select: none;
@@ -132,13 +140,15 @@ img {
     --slight-black: #141414;
     --light-black:  #222222;
     --white:        #ffffff;
+    --dark-white:   #cfcfcf;
     --gray-b6:      #b6b6b6;
     --orange:       #ff472b;
     --red:          #d30303;
+    --green:        #28bd00;
 }
 
 :root { /* sizes */
-    --top-bar-height:                80px;
+    --top-bar-height: 80px;
 }
 
 :root { /* transition duration times */

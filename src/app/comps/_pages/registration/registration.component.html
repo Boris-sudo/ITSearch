@@ -1,30 +1,73 @@
-<div class="steps-container">
-    <div class="steps">
-        <ul>
-            <li [class.active]="choosen_page >= 1"><span>1</span></li>
-            <li [class.active]="choosen_page >= 2"><span>2</span></li>
-            <li [class.active]="choosen_page >= 3"><span>3</span></li>
-            <li [class.active]="choosen_page >= 4"><span>4</span></li>
-            <li [class.active]="choosen_page >= 5"><span>5</span></li>
-        </ul>
-    </div>
-</div>
-
-<div class="main-content">
-
-    <form id="form-roller" class="form-container">
-        <div class="form-roller">
-            <div id="form-card1" class="create-form">
-
-            </div>
+<main class="main">
+    <div class="steps-container">
+        <div class="steps">
+            <ul>
+                <li *ngFor="let item of [].constructor(max_page); let i = index" [class.active]="chosen_page >= i+1">
+                    <span>{{ i + 1 }}</span></li>
+            </ul>
         </div>
-    </form>
-
-    <div class="buttons-container">
-        <button id="prev-make-meeting-btn" (click)="choosePage(choosen_page - 1)" type="button" class="btn prev-btn"><img
-                class="arrow-img img-rev" alt="arrow image" src="assets/arrow.svg"> Назад
-        </button>
-        <button id="next-make-meeting-btn" (click)="choosePage(choosen_page + 1)" type="button" class="btn next-btn">
-            Далее <img class="arrow-img" alt="arrow image" src="assets/arrow.svg"></button>
     </div>
-</div>
+
+    <div class="main-content">
+
+        <form id="form-roller" class="form-container">
+            <div class="form-roller">
+                <div id="form-card1" class="create-form">
+                    <div class="box">
+                        <p class="box-header font-size-medium fw-600">Введите свои данные</p>
+                    </div>
+
+                    <div class="box">
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="email" autocomplete="on"
+                                   name="email" type="email">
+                            <span class="input-span">Email</span>
+                        </label>
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="password1" minlength="8"
+                                   autocomplete="pn" name="password1" type="password">
+                            <span class="input-span">Password</span>
+                        </label>
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="password2" minlength="8"
+                                   autocomplete="off" name="password2" type="password">
+                            <span class="input-span">Confirm password</span>
+                        </label>
+                    </div>
+                </div>
+                <div id="form-card2" class="create-form">
+                    <div class="box">
+                        <p class="box-header font-size-medium fw-600">Введите данные о себе</p>
+                    </div>
+
+                    <div class="box">
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="name" autocomplete="off"
+                                   name="email" type="text">
+                            <span class="input-span">Name</span>
+                        </label>
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="age" maxlength="3"
+                                   autocomplete="off" name="age" type="text">
+                            <span class="input-span">Age</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="buttons-container">
+            <button id="prev-make-meeting-btn" (click)="choosePage(chosen_page - 1)" [disabled]="chosen_page === 1"
+                    type="button" class="btn prev-btn" #prev_reg_btn><img
+                    class="arrow-img img-rev" alt="arrow image" src="assets/arrow.svg"> Назад
+            </button>
+            <button id="next-make-meeting-btn" (click)="choosePage(chosen_page + 1)" *ngIf="chosen_page !== max_page"
+                    type="button" class="btn next-btn" #next_reg_btn>
+                Далее <img class="arrow-img" alt="arrow image" src="assets/arrow.svg"></button>
+            <button id="finish-btn" (click)="choosePage(chosen_page + 1)" *ngIf="chosen_page === max_page" type="button"
+                    class="btn finish-btn" #finish_reg_btn>
+                Завершить
+            </button>
+        </div>
+    </div>
+</main>
