@@ -1,8 +1,11 @@
 import {AfterViewInit, Component, ViewChildren} from '@angular/core';
 import {NgForOf} from "@angular/common";
-import {InternshipModel, Internships} from "../../../models/internship.model";
+import {InternshipModel} from "../../../models/internship.model";
 import {InternshipCardComponent} from "../../_models/internship-card/internship-card.component";
 import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.component";
+import {FormsModule} from "@angular/forms";
+import {FilterMenuComponent} from "../../_models/filter-menu/filter-menu.component";
+import {InternshipsService} from "../../../services/api/internships.service";
 
 @Component({
     selector: 'app-search',
@@ -10,17 +13,24 @@ import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.c
     imports: [
         NgForOf,
         InternshipCardComponent,
-        SearchLoaderComponent
+        SearchLoaderComponent,
+        FormsModule,
+        FilterMenuComponent
     ],
     templateUrl: './search.component.html',
-    styleUrl: './search.component.css'
+    styleUrls: ['../../_models/styles/input-design.css', './search.component.css']
 })
 export class SearchComponent implements AfterViewInit {
     @ViewChildren('internship') public internship_cards: any;
-    public internships: InternshipModel[] = Internships;
+    public internships: InternshipModel[] = [];
     private adding_new_internships: boolean = false;
 
-    constructor() {
+    public search_name: string = '';
+    public last_search: string = '';
+
+    constructor(
+        private internship_service: InternshipsService,
+    ) {
     }
 
     ngAfterViewInit() {
@@ -31,13 +41,38 @@ export class SearchComponent implements AfterViewInit {
             this.ScrollListener();
         })
         this.AddInternships();
+
+        this.internship_service.subscribers$.subscribe(
+            (data) => {
+                // @ts-ignore
+                this.internship_service.filter(data).subscribe(
+                    resp => {
+                        this.internships = resp;
+                    }
+                )
+            }
+        )
     }
 
     AddInternships() {
         if (this.adding_new_internships) return;
         this.adding_new_internships = true;
         SearchLoaderComponent.Show();
-        // TODO get from api
+
+        this.internship_service.filter({
+            duration: '',
+            schedule: '',
+            experience: '',
+            salary: '',
+            city: '',
+            education: ''
+        }).subscribe(
+            resp => {
+                console.log(resp);
+                for (const e of resp) this.internships.push(e);
+                SearchLoaderComponent.Hide();
+            }
+        )
     }
 
     ScrollListener() {
@@ -57,5 +92,10 @@ export class SearchComponent implements AfterViewInit {
         })
 
         observer.observe(last_internship);
+    }
+
+    InteractWithFilterMenu() {
+        if (FilterMenuComponent.IsShown()) FilterMenuComponent.Hide();
+        else FilterMenuComponent.Show();
     }
 }

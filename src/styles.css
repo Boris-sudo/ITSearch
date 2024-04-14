@@ -45,11 +45,11 @@ input, button, select {
     outline:        0;
 }
 
-input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active{
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
     -webkit-background-clip: text;
     -webkit-text-fill-color: var(--white);
-    transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px #23232329;
+    transition:              background-color 5000s ease-in-out 0s;
+    box-shadow:              inset 0 0 20px 20px #23232329;
 
 }
 
@@ -138,6 +138,7 @@ img {
     --blue-3:       #121d39;
     --black:        #000000;
     --slight-black: #141414;
+    --llight-black: #444444;
     --light-black:  #222222;
     --white:        #ffffff;
     --dark-white:   #cfcfcf;
@@ -145,6 +146,7 @@ img {
     --orange:       #ff472b;
     --red:          #d30303;
     --green:        #28bd00;
+    --yellow:       #fc9700;
 }
 
 :root { /* sizes */

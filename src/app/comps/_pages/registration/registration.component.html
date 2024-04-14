@@ -26,12 +26,12 @@
                         <label class="input-label">
                             <input placeholder="" class="input-input" [(ngModel)]="password1" minlength="8"
                                    autocomplete="pn" name="password1" type="password">
-                            <span class="input-span">Password</span>
+                            <span class="input-span">Пароль</span>
                         </label>
                         <label class="input-label">
                             <input placeholder="" class="input-input" [(ngModel)]="password2" minlength="8"
                                    autocomplete="off" name="password2" type="password">
-                            <span class="input-span">Confirm password</span>
+                            <span class="input-span">Подтвердите пароль</span>
                         </label>
                     </div>
                 </div>
@@ -44,12 +44,40 @@
                         <label class="input-label">
                             <input placeholder="" class="input-input" [(ngModel)]="name" autocomplete="off"
                                    name="email" type="text">
-                            <span class="input-span">Name</span>
+                            <span class="input-span">ФИО</span>
                         </label>
                         <label class="input-label">
-                            <input placeholder="" class="input-input" [(ngModel)]="age" maxlength="3"
-                                   autocomplete="off" name="age" type="text">
-                            <span class="input-span">Age</span>
+                            <input placeholder="" class="input-input" [(ngModel)]="city" maxlength="30"
+                                   autocomplete="off" name="city" type="text">
+                            <span class="input-span">Город</span>
+                        </label>
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="specialization" maxlength="100"
+                                   autocomplete="off" name="specialization" type="text">
+                            <span class="input-span">Специализация</span>
+                        </label>
+                    </div>
+                </div>
+                <div id="form-card3" class="create-form">
+                    <div class="box">
+                        <p class="box-header font-size-medium fw-600">Введите данные о себе</p>
+                    </div>
+
+                    <div class="box">
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="education" autocomplete="off"
+                                   name="email" type="text">
+                            <span class="input-span">Образование (нет/среднее/высшее)</span>
+                        </label>
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="experience" maxlength="30"
+                                   autocomplete="off" name="city" type="text">
+                            <span class="input-span">Опыт работы (месяцев)</span>
+                        </label>
+                        <label class="input-label">
+                            <input placeholder="" class="input-input" [(ngModel)]="salary" maxlength="100"
+                                   autocomplete="off" name="specialization" type="text">
+                            <span class="input-span">Ожидаемая зарплата</span>
                         </label>
                     </div>
                 </div>
@@ -70,7 +98,7 @@
             </button>
         </div>
 
-        <p class="bottom-text">Нет аккаунта? <a (click)="router.navigate('register')">зарегистрироваться</a></p>
+        <p class="bottom-text">Есть аккаунт? <a (click)="router.navigate('login')">войти</a></p>
 
     </div>
 </main>

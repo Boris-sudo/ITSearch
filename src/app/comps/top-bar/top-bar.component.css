@@ -28,15 +28,23 @@
 .nav-bar {
     display:        flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 10px;
 }
 
-.link {cursor: pointer;}
+.link {
+    padding: 15px 30px;
+    background: var(--light-black);
+    border-radius: 8px;
+    transition-duration: var(--fast-transition-time);
+    color: var(--white);
+    cursor: pointer;
+}
 
-.link > p { transition-duration: var(--fast-transition-time); }
+.link > p { transition-duration: inherit; color: inherit; }
 
-.active_link > p {
-    color: var(--blue);
+.active_link {
+    background: var(--orange);
+    color: var(--slight-black);
 }
 
 .hamburger {

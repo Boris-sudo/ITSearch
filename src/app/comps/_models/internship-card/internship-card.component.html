@@ -1,3 +1,41 @@
-<div style="height: 400px; width: 100%">
-    <p>{{internship?.name}}</p>
+<div class="card">
+    <div class="top-car-content">
+        <div class="info-badges-container">
+            <div class="info-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.75 24a.75.75 0 0 1-.75-.75V.75a.75.75 0 0 1 1.5 0v22.5a.75.75 0 0 1-.75.75z"/><path d="M20 13H3.75a.75.75 0 0 1 0-1.5h15.497L14.43 7.88a1.738 1.738 0 0 1-.013-2.75l4.83-3.63H3.75a.75.75 0 0 1 0-1.5H20c.689 0 1.25.561 1.25 1.25 0 .395-.179.755-.489.99L15.33 6.32c-.021.018-.08.079-.08.181s.059.163.093.19l5.417 4.07c.312.234.49.595.49.99 0 .688-.561 1.249-1.25 1.249zm0-11.5h.01H20z"/></svg>
+                <span class="card-subtitle info-text">{{ internship?.city }}</span>
+            </div>
+            <div class="info-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.25 22H2.75A2.752 2.752 0 0 1 0 19.25V7.75A2.752 2.752 0 0 1 2.75 5h18.5A2.752 2.752 0 0 1 24 7.75v11.5A2.752 2.752 0 0 1 21.25 22zM2.75 6.5c-.689 0-1.25.561-1.25 1.25v11.5c0 .689.561 1.25 1.25 1.25h18.5c.689 0 1.25-.561 1.25-1.25V7.75c0-.689-.561-1.25-1.25-1.25H2.75z"/><path d="M15.25 6.5a.75.75 0 0 1-.75-.75v-2a.25.25 0 0 0-.25-.25h-4.5a.25.25 0 0 0-.25.25v2a.75.75 0 0 1-1.5 0v-2C8 2.785 8.785 2 9.75 2h4.5c.965 0 1.75.785 1.75 1.75v2a.75.75 0 0 1-.75.75zM23.25 12.5H.75a.75.75 0 0 1 0-1.5h22.5a.75.75 0 0 1 0 1.5z"/><path d="M6.75 14.167a.75.75 0 0 1-.75-.75V9.75a.75.75 0 0 1 1.5 0v3.667a.75.75 0 0 1-.75.75zM17.25 14.167a.75.75 0 0 1-.75-.75V9.75a.75.75 0 0 1 1.5 0v3.667a.75.75 0 0 1-.75.75z"/></svg>
+                <span class="card-subtitle info-text">{{ GetExperience() }}</span>
+            </div>
+            <div class="info-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill-rule="evenodd"><path d="M11.614 3.357a.75.75 0 0 1 .772 0l10 6a.75.75 0 0 1 0 1.286l-10 6a.75.75 0 0 1-.772 0l-10-6a.75.75 0 0 1 0-1.286l10-6ZM3.458 10 12 15.125 20.542 10 12 4.875 3.458 10Z"/><path d="M21.5 9.25a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0V10a.75.75 0 0 1 .75-.75ZM6 11.75a.75.75 0 0 1 .75.75v4A2.25 2.25 0 0 0 9 18.75h6a2.25 2.25 0 0 0 2.25-2.25v-4a.75.75 0 0 1 1.5 0v4A3.75 3.75 0 0 1 15 20.25H9a3.75 3.75 0 0 1-3.75-3.75v-4a.75.75 0 0 1 .75-.75Z"/></g></svg>
+                <span class="card-subtitle info-text">{{ GetEducation() }}</span>
+            </div>
+        </div>
+        <span class="card-title font-size-xlarge">{{ internship?.specialization }}</span>
+        <span style="margin-top: 5px;" class="card-title font-size-large">{{ internship?.salary }} рублей</span>
+        <span class="card-subtitle">{{GetDuration()}}</span>
+        <div class="rating-container">
+            <svg class="star" [class.color_star]="internship?.rating! >= 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.937 9.191a1.273 1.273 0 0 0-1.098-.877l-6.927-.629-2.739-6.411a1.276 1.276 0 0 0-2.346.001l-2.739 6.41-6.928.629a1.275 1.275 0 0 0-.724 2.232l5.236 4.592-1.544 6.801a1.275 1.275 0 0 0 1.897 1.378L12 19.746l5.973 3.571a1.276 1.276 0 0 0 1.898-1.378l-1.544-6.801 5.236-4.591c.385-.337.532-.869.374-1.356z"/></svg>
+            <svg class="star" [class.color_star]="internship?.rating! >= 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.937 9.191a1.273 1.273 0 0 0-1.098-.877l-6.927-.629-2.739-6.411a1.276 1.276 0 0 0-2.346.001l-2.739 6.41-6.928.629a1.275 1.275 0 0 0-.724 2.232l5.236 4.592-1.544 6.801a1.275 1.275 0 0 0 1.897 1.378L12 19.746l5.973 3.571a1.276 1.276 0 0 0 1.898-1.378l-1.544-6.801 5.236-4.591c.385-.337.532-.869.374-1.356z"/></svg>
+            <svg class="star" [class.color_star]="internship?.rating! >= 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.937 9.191a1.273 1.273 0 0 0-1.098-.877l-6.927-.629-2.739-6.411a1.276 1.276 0 0 0-2.346.001l-2.739 6.41-6.928.629a1.275 1.275 0 0 0-.724 2.232l5.236 4.592-1.544 6.801a1.275 1.275 0 0 0 1.897 1.378L12 19.746l5.973 3.571a1.276 1.276 0 0 0 1.898-1.378l-1.544-6.801 5.236-4.591c.385-.337.532-.869.374-1.356z"/></svg>
+            <svg class="star" [class.color_star]="internship?.rating! >= 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.937 9.191a1.273 1.273 0 0 0-1.098-.877l-6.927-.629-2.739-6.411a1.276 1.276 0 0 0-2.346.001l-2.739 6.41-6.928.629a1.275 1.275 0 0 0-.724 2.232l5.236 4.592-1.544 6.801a1.275 1.275 0 0 0 1.897 1.378L12 19.746l5.973 3.571a1.276 1.276 0 0 0 1.898-1.378l-1.544-6.801 5.236-4.591c.385-.337.532-.869.374-1.356z"/></svg>
+            <svg class="star" [class.color_star]="internship?.rating! >= 5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.937 9.191a1.273 1.273 0 0 0-1.098-.877l-6.927-.629-2.739-6.411a1.276 1.276 0 0 0-2.346.001l-2.739 6.41-6.928.629a1.275 1.275 0 0 0-.724 2.232l5.236 4.592-1.544 6.801a1.275 1.275 0 0 0 1.897 1.378L12 19.746l5.973 3.571a1.276 1.276 0 0 0 1.898-1.378l-1.544-6.801 5.236-4.591c.385-.337.532-.869.374-1.356z"/></svg>
+            <span class="rating-text" style="margin-left: 3px;">{{ internship?.rating }}</span>
+            <span class="rating-text" style="color: #959595">/ {{ internship?.rates_count }}</span>
+        </div>
+        <div class="card-description">Описание</div>
+        <div><p class="font-size-medium">{{internship?.name}}</p></div>
+    </div>
+    <div class="company-info-container">
+        <div style="display: flex; flex-direction: row; align-items: center; align-content: center;">
+            <div class="company-info-avatar"></div>
+            <div class="company-info-title font-size-medium">Algous Studio</div>
+        </div>
+        <div class="company-info-description">Студия компьютерной графики с 20-летним опытом создания визуальных эффектов
+            для кино и сериалов расширяет команду под новые проекты
+        </div>
+    </div>
 </div>

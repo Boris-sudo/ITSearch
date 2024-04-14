@@ -1,0 +1,7 @@
+<div class="search-content">
+    <div class="internships-container">
+        <div class="internship-container" *ngFor="let internship of internships" #internship>
+            <app-internship-card [internship]="internship"></app-internship-card>
+        </div>
+    </div>
+</div>

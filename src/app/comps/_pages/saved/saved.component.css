@@ -1,0 +1,21 @@
+.internships-container {
+    display:        flex;
+    flex-direction: column;
+    gap:            30px;
+    padding:        30px 20px;
+}
+
+.top-part {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.search-container {
+    width: calc(100% - 90px);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

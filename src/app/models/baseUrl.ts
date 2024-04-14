@@ -1,2 +1,2 @@
 //Backend URL
-export const baseUrl = 'http://158.160.119.73:8081/api/v1';
+export const baseUrl = 'http://82.97.243.42:8000/api';

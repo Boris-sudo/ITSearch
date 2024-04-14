@@ -1,33 +1,36 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import {TobBarRouteModel} from "../models/tob-bar-route.model";
 import {SlideMenuComponent} from "../comps/_models/slide-menu/slide-menu.component";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RoutingService {
-  public readonly TopBarRoutes: TobBarRouteModel[] = [
-    { name: 'shorts', url: '' },
-    { name: 'search', url: 'search' },
-  ]
+    public readonly TopBarRoutes: TobBarRouteModel[] = [
+        {name: 'Пульс', url: ''},
+        {name: 'Поиск', url: 'search'},
+        {name: 'Профиль', url: 'profile'},
+        {name: 'Сохраненные', url: 'saved'},
+    ]
 
-  constructor(
-      private router: Router,
-  ) { }
-
-  navigate(link: string) {
-    if (SlideMenuComponent.IsOpened()) {
-      SlideMenuComponent.Close();
-      setTimeout(() => {
-        this.router.navigate([link]).then();
-      }, SlideMenuComponent.CloseTime)
-    } else {
-      this.router.navigate([link]).then();
+    constructor(
+        private router: Router,
+    ) {
     }
-  }
 
-  getRoute() {
-    return this.router.url.substring(1,this.router.url.length);
-  }
+    navigate(link: string) {
+        if (SlideMenuComponent.IsOpened()) {
+            SlideMenuComponent.Close();
+            setTimeout(() => {
+                this.router.navigate([link]).then();
+            }, SlideMenuComponent.CloseTime)
+        } else {
+            this.router.navigate([link]).then();
+        }
+    }
+
+    getRoute() {
+        return this.router.url.substring(1, this.router.url.length);
+    }
 }

@@ -36,60 +36,6 @@
     gap:            20px;
 }
 
-.input {
-    width:          100%;
-    height:         var(--input-height);
-    display:        flex;
-    flex-direction: row;
-    align-items:    center;
-    align-content:  center;
-    background:     var(--light-black);
-    border-radius:  8px;
-    padding:        19px 16px 0;
-    outline:        none;
-    border:         none;
-    font-family:    var(--ff-rubik);
-    caret-color:    var(--black);
-}
-
-.input:valid:not(:placeholder-shown) ~ .span { color: var(--green) !important; }
-
-.input:valid ~ .label { box-shadow: inset 0 0 0 1px var(--green) !important; }
-
-.input:invalid:not(:placeholder-shown) ~ .span { color: var(--red) !important; }
-
-.input:invalid ~ .label { box-shadow: inset 0 0 0 1px var(--red) !important; }
-
-.label {
-    position: relative;
-    width:    100%;
-}
-
-.span {
-    position:            absolute;
-    line-height:         100%;
-    left:                16px;
-    top:                 20px;
-    max-width:           calc(100% - 32px);
-    text-overflow:       ellipsis;
-    overflow:            hidden;
-    white-space:         nowrap;
-    pointer-events:      none;
-    transition:          all .25s;
-    transform-origin:    left;
-    transition-property: transform, color, font-size;
-}
-
-.input:focus, .input:not(:placeholder-shown) {
-    background:         var(--light-black);
-    box-shadow:         inset 0 0 0 1px var(--white);
-    -webkit-appearance: none;
-}
-
-.input:focus ~ .span, .input:not(:placeholder-shown) ~ .span {
-    transform: translateY(-10px) scale(.87);
-}
-
 .send-button {
     height:        var(--input-height);
     background:    var(--blue);
@@ -98,6 +44,10 @@
     font-size:     20px;
     font-weight:   600;
     cursor:        pointer;
+}
+
+.send-button:disabled {
+    background: var(--gray-b6) !important;
 }
 
 .bottom-text {

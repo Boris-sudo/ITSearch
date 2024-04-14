@@ -62,64 +62,6 @@
     padding:        30px 0;
 }
 
-.input-label {
-    position: relative;
-    width:    100%;
-}
-
-.input-input {
-    width:          100%;
-    height:         var(--input-button-height);
-    display:        flex;
-    flex-direction: row;
-    align-items:    center;
-    align-content:  center;
-    background:     var(--light-black);
-    border-radius:  8px;
-    padding:        19px 16px 0;
-    outline:        none;
-    border:         none;
-    font-family:    var(--ff-rubik);
-    caret-color:    var(--white);
-}
-
-.input-input:valid:not(:placeholder-shown) ~ .input-span { color: var(--green) !important; }
-
-.input-input:valid ~ .input-label { box-shadow: inset 0 0 0 1px var(--green) !important; }
-
-.input-input:invalid:not(:placeholder-shown) ~ .input-span { color: var(--red) !important; }
-
-.input-input:invalid ~ .input-label { box-shadow: inset 0 0 0 1px var(--red) !important; }
-
-.input-span {
-    position:            absolute;
-    line-height:         100%;
-    left:                16px;
-    top:                 20px;
-    max-width:           calc(100% - 32px);
-    text-overflow:       ellipsis;
-    overflow:            hidden;
-    white-space:         nowrap;
-    pointer-events:      none;
-    transition:          all .25s;
-    transform-origin:    left;
-    transition-property: transform, color, font-size;
-}
-
-.input-input:-webkit-autofill {
-    background: var(--light-black);
-}
-
-.input-input:focus, .input-input:not(:placeholder-shown) {
-    background:         var(--slight-black);
-    box-shadow:         inset 0 0 0 1px var(--white);
-    -webkit-appearance: none;
-}
-
-.input-input:focus ~ .input-span, .input-input:not(:placeholder-shown) ~ .input-span {
-    transform: translateY(-10px) scale(.87);
-}
-
 /* steps */
 
 .steps-container {

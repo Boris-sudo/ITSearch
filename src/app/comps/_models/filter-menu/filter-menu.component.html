@@ -1,0 +1,57 @@
+<!-- <main class="background" [id]="PrivateContainerId+'bg'"></main> -->
+
+<main class="main" [id]="PrivateContainerId">
+    <label class="input-label">
+        <input placeholder="" class="input-input" type="text"
+               autocomplete="on" maxlength="18" required spellcheck="false" name="city" [(ngModel)]="city">
+        <span class="input-span">Город</span>
+    </label>
+    <label class="input-label">
+        <select class="input-input" type="tel"
+               autocomplete="on" maxlength="18" required spellcheck="false" name="phone" [(ngModel)]="education"
+                inputmode="tel">
+            <option value="0">отсутствует</option>
+            <option value="1">среднее</option>
+            <option value="2">высшее</option>
+        </select>
+        <span class="input-span">Образование</span>
+    </label>
+    <div>
+        <div class="checkbox-container">
+            <div (click)="graphic = 0" class="checkbox-content">
+                <input [checked]="graphic === 0" type="checkbox">
+                <p class="font-size-regular">Полный день</p>
+            </div>
+            <div (click)="graphic = 1" class="checkbox-content">
+                <input [checked]="graphic === 1" type="checkbox">
+                <p class="font-size-regular">Удаленная работа</p>
+            </div>
+            <div (click)="graphic = 2" class="checkbox-content">
+                <input [checked]="graphic === 2" type="checkbox">
+                <p class="font-size-regular">Гибкий график</p>
+            </div>
+            <div (click)="graphic = 3" class="checkbox-content">
+                <input [checked]="graphic === 3" type="checkbox">
+                <p class="font-size-regular">Сменный график</p>
+            </div>
+            <div (click)="graphic = 4" class="checkbox-content">
+                <input [checked]="graphic === 4" type="checkbox">
+                <p class="font-size-regular">Вахтовый метод</p>
+            </div>
+        </div>
+        <span class="input-span">График работы</span>
+    </div>
+    <label class="input-label">
+        <input placeholder="" class="input-input" type="text" pattern="\d{0,5}"
+               autocomplete="on" maxlength="5" required spellcheck="false" name="experience" [(ngModel)]="experience">
+        <span class="input-span">Опыт работы (месяцев)</span>
+    </label>
+    <label class="input-label">
+        <input placeholder="" class="input-input" type="text" pattern="\d{0,100}"
+               autocomplete="on" maxlength="30" required spellcheck="false" name="salary" [(ngModel)]="salary">
+        <span class="input-span">Ожидаемая зарплата (рублей)</span>
+    </label>
+
+    <button class="submit-btn" (click)="choose()">Применить</button>
+</main>
+

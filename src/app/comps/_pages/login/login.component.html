@@ -4,19 +4,19 @@
         <h1>Войти в аккаунт</h1>
 
         <form class="buttons-container">
-            <label class="label">
-                <input placeholder="" class="input" type="tel"
-                       autocomplete="on" maxlength="18" required spellcheck="false" name="phone" [(ngModel)]="email"
-                       inputmode="tel">
-                <span class="span">Email</span>
+            <label class="input-label">
+                <input placeholder="" class="input-input" type="email"
+                       autocomplete="on" required spellcheck="false" name="email" [(ngModel)]="email"
+                       inputmode="email">
+                <span class="input-span">Email</span>
             </label>
-            <label class="label">
-                <input [(ngModel)]="password" placeholder="" class="input" type="password" autocomplete="off"
+            <label class="input-label">
+                <input [(ngModel)]="password" placeholder="" class="input-input" type="password" autocomplete="off"
                        maxlength="18" required spellcheck="false" id="password-input" name="password"
                        inputmode="password">
-                <span class="span">Пароль</span>
+                <span class="input-span">Пароль</span>
             </label>
-            <button (click)="login()" type="button" class="send-button">Войти</button>
+            <button [disabled]="email === '' || password === ''" (click)="login()" type="button" class="send-button">Войти</button>
         </form>
 
         <p class="bottom-text">Нет аккаунта? <a (click)="router.navigate('register')">зарегистрироваться</a></p>
