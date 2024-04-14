@@ -29,6 +29,8 @@ export class SearchComponent implements AfterViewInit {
     public search_name: string = '';
     public last_search: string = '';
 
+    public sorting: boolean = false;
+
     constructor(
         public router: RoutingService,
         private internship_service: InternshipsService,
@@ -45,7 +47,6 @@ export class SearchComponent implements AfterViewInit {
 
         this.internship_service.subscribers$.subscribe(
             (data) => {
-                console.log(data);
                 this.internships = [];
                 SearchLoaderComponent.Show();
                 // @ts-ignore
@@ -57,6 +58,14 @@ export class SearchComponent implements AfterViewInit {
                 )
             }
         )
+    }
+
+    Sort() {
+        if (this.sorting)
+            this.internships.sort(function(a,b) { return a.rating > b.rating? 1:-1; })
+        else
+            this.internships.sort(function(a,b) { return a.rating<b.rating? 1:-1;});
+        this.sorting = !this.sorting;
     }
 
     ScrollToTop() {

@@ -67,6 +67,6 @@ export class InternshipsService {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         });
-        return this.http.post(`${baseUrl}/internship/my`, data, {headers: headers});
+        return this.http.post(`${baseUrl}/review`, data, {headers: headers});
     }
 }
