@@ -9,12 +9,13 @@
     z-index:                   501;
     background:                var(--white);
     transition-duration:       var(--fast-transition-time);
-    padding:                   150px 10px 0px 10px;
+    padding:                   150px 10px 50px 10px;
     border-top-left-radius:    8px;
     border-bottom-left-radius: 8px;
     display:                   flex;
     flex-direction:            column;
     gap:                       30px;
+    overflow-y: scroll;
 }
 
 .background {
@@ -54,3 +55,18 @@ input:checked {
 }
 
 .checkbox-content > p { color: var(--slight-black); }
+
+.submit-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    color: var(--white);
+    background: var(--light-black);
+    border: none;
+    transition-duration: var(--fast-transition-time);
+    border-radius: 8px;
+}
+
+.submit-btn:hover {
+    filter: brightness(.7);
+}

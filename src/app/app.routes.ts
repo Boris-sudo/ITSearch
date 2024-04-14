@@ -5,6 +5,7 @@ import {RegistrationComponent} from "./comps/_pages/registration/registration.co
 import {SearchComponent} from "./comps/_pages/search/search.component";
 import {ProfileComponent} from "./comps/_pages/profile/profile.component";
 import {SavedComponent} from "./comps/_pages/saved/saved.component";
+import {InternshipViewComponent} from "./comps/_pages/internship-view/internship-view.component";
 
 export const routes: Routes = [
     {path: '', component: ShortsComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
     {path: 'register', component: RegistrationComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'saved', component: SavedComponent},
+    {path: 'internship/:id', component: InternshipViewComponent},
 ];

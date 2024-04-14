@@ -3,8 +3,9 @@ import {LocalstorageService} from "../../../services/localstorage.service";
 import {RoutingService} from "../../../services/routing.service";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {InternshipCardComponent} from "../../_models/internship-card/internship-card.component";
-import {InternshipModel, Internships} from "../../../models/internship.model";
+import {InternshipModel} from "../../../models/internship.model";
 import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.component";
+import {InternshipsService} from "../../../services/api/internships.service";
 
 @Component({
     selector: 'app-shorts',
@@ -28,10 +29,10 @@ export class ShortsComponent implements OnInit {
     private shorts_deleting: boolean = false;
 
     constructor(
+        private internships_service: InternshipsService,
         private localstorage: LocalstorageService,
         private router: RoutingService
     ) {
-        for (const internship of Internships) this.internships.push(internship);
         window.addEventListener('touchstart', (e) => {
             if (this.internships.length === 0) return;
             const card = document.getElementById('f0')!;
@@ -67,6 +68,7 @@ export class ShortsComponent implements OnInit {
 
     ngOnInit() {
         if (this.localstorage.get('user') === '') this.router.navigate('login');
+        this.LoadMoreInternships();
     }
 
     moveLeft(mobile?: boolean) {
@@ -93,6 +95,13 @@ export class ShortsComponent implements OnInit {
 
     deleteFirstInternship() {
         this.internships = this.internships.splice(1, this.internships.length);
+        this.LoadMoreInternships();
+    }
+
+    saveFirstInternship() {
+        this.internships_service.save(this.internships[0].id).subscribe(
+            resp => {  },
+        )
     }
 
     moveRight(mobile: boolean = false) {
@@ -105,6 +114,8 @@ export class ShortsComponent implements OnInit {
         else card.style.transform = 'translateX(70vw) translateY(20vh) rotate(30deg) scale(0.9)';
         card.style.opacity = '0';
         button.style.backgroundColor = 'var(--blue)';
+
+        this.saveFirstInternship();
 
         setTimeout(() => {
             card.style.display = 'none';
@@ -119,5 +130,10 @@ export class ShortsComponent implements OnInit {
 
     LoadMoreInternships() {
         if (this.internships.length > 2) return;
+        this.internships_service.get_shorts().subscribe(
+            resp => {
+                for (const e of resp) this.internships.push(e);
+            }, error => { this.router.navigate('login'); }
+        )
     }
 }

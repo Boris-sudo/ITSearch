@@ -6,6 +6,7 @@ import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.c
 import {FormsModule} from "@angular/forms";
 import {FilterMenuComponent} from "../../_models/filter-menu/filter-menu.component";
 import {InternshipsService} from "../../../services/api/internships.service";
+import {RoutingService} from "../../../services/routing.service";
 
 @Component({
     selector: 'app-search',
@@ -29,12 +30,12 @@ export class SearchComponent implements AfterViewInit {
     public last_search: string = '';
 
     constructor(
+        public router: RoutingService,
         private internship_service: InternshipsService,
     ) {
     }
 
     ngAfterViewInit() {
-        this.internship_cards = this.internship_cards._results;
         const scroll = document.getElementById('main-scroll')!;
 
         scroll.addEventListener('scroll', () => {
@@ -44,14 +45,26 @@ export class SearchComponent implements AfterViewInit {
 
         this.internship_service.subscribers$.subscribe(
             (data) => {
+                console.log(data);
+                this.internships = [];
+                SearchLoaderComponent.Show();
                 // @ts-ignore
                 this.internship_service.filter(data).subscribe(
                     resp => {
+                        console.log(resp);
                         this.internships = resp;
                     }
                 )
             }
         )
+    }
+
+    ScrollToTop() {
+        const scroller = document.getElementById('main-scroll')!;
+        scroller.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        })
     }
 
     AddInternships() {
@@ -71,12 +84,13 @@ export class SearchComponent implements AfterViewInit {
                 console.log(resp);
                 for (const e of resp) this.internships.push(e);
                 SearchLoaderComponent.Hide();
+                this.adding_new_internships = false;
             }
         )
     }
 
     ScrollListener() {
-        const last_internship = this.internship_cards[this.internship_cards.length - 1].nativeElement;
+        const last_internship = this.internship_cards.last.nativeElement;
 
         let onIntersection = (entries: any, opt: any) => {
             entries.forEach((entry: any) => {
@@ -97,5 +111,17 @@ export class SearchComponent implements AfterViewInit {
     InteractWithFilterMenu() {
         if (FilterMenuComponent.IsShown()) FilterMenuComponent.Hide();
         else FilterMenuComponent.Show();
+    }
+
+    FilterWithKeyWords() {
+        this.internships = [];
+        SearchLoaderComponent.Show();
+        this.internship_service.filter({search: this.search_name, city:'', education:'', salary:'', experience:'', schedule:'', duration: ''}).subscribe(
+            resp => {
+                console.log(resp);
+                for (const e of resp) this.internships.push(e);
+                SearchLoaderComponent.Hide();
+            }
+        )
     }
 }

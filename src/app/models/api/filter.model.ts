@@ -5,4 +5,5 @@ export interface FilterModel {
     experience: string;
     salary: string;
     duration: string;
+    search?: string;
 }

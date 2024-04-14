@@ -5,7 +5,7 @@
                    maxlength="40" required spellcheck="false" id="password-input" name="search name">
             <span class="input-span">Название</span>
         </label>
-        <button [disabled]="search_name == last_search" class="find-btn fw-600">Найти</button>
+        <button [disabled]="search_name == last_search" (click)="FilterWithKeyWords()" class="find-btn fw-600">Найти</button>
     </div>
     <div (click)="InteractWithFilterMenu()" class="filter-logo">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
 
 <div class="search-content">
     <div class="internships-container">
-        <div class="internship-container" *ngFor="let internship of internships" #internship>
+        <div (click)="router.navigate('internship/'+internship.id)" class="internship-container" *ngFor="let internship of internships" #internship>
             <app-internship-card [internship]="internship"></app-internship-card>
         </div>
     </div>
@@ -26,3 +26,5 @@
 </div>
 
 <app-filter-menu></app-filter-menu>
+
+<button class="scroll-to-top" (click)="ScrollToTop()">Вверх</button>

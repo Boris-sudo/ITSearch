@@ -25,7 +25,6 @@ export class ProfileComponent {
             resp => {
                 this.profile = resp;
                 for (const key in this.profile) if (key !== 'id') this.profile_keys.push(key);
-                console.log(this.profile_keys)
             }, error => {
                 this.router.navigate('login')
             }
