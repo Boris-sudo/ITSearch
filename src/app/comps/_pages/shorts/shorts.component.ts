@@ -3,7 +3,7 @@ import {LocalstorageService} from "../../../services/localstorage.service";
 import {RoutingService} from "../../../services/routing.service";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {InternshipCardComponent} from "../../_models/internship-card/internship-card.component";
-import {InternshipModel} from "../../../models/internship.model";
+import {InternshipModel, Internships} from "../../../models/internship.model";
 import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.component";
 import {InternshipsService} from "../../../services/api/internships.service";
 
@@ -22,7 +22,7 @@ import {InternshipsService} from "../../../services/api/internships.service";
 })
 export class ShortsComponent implements OnInit {
     private readonly deleteTimer: number = 1200;
-    public internships: InternshipModel[] = [];
+    public internships: InternshipModel[] = Internships;
     private touch_x?: number;
     private percent?: number;
     private readonly max_delta = 100;
@@ -67,8 +67,8 @@ export class ShortsComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.localstorage.get('user') === '') this.router.navigate('login');
-        this.LoadMoreInternships();
+        // if (this.localstorage.get('user') === '') this.router.navigate('login');
+        // this.LoadMoreInternships();
     }
 
     moveLeft(mobile?: boolean) {
@@ -95,7 +95,7 @@ export class ShortsComponent implements OnInit {
 
     deleteFirstInternship() {
         this.internships = this.internships.splice(1, this.internships.length);
-        this.LoadMoreInternships();
+        // this.LoadMoreInternships();
     }
 
     saveFirstInternship() {

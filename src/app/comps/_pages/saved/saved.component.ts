@@ -4,7 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {InternshipCardComponent} from "../../_models/internship-card/internship-card.component";
 import {NgForOf} from "@angular/common";
 import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.component";
-import {InternshipModel} from "../../../models/internship.model";
+import {InternshipModel, Internships} from "../../../models/internship.model";
 import {InternshipsService} from "../../../services/api/internships.service";
 
 @Component({
@@ -21,7 +21,7 @@ import {InternshipsService} from "../../../services/api/internships.service";
   styleUrl: './saved.component.css'
 })
 export class SavedComponent implements OnInit {
-    public internships: InternshipModel[] = [];
+    public internships: InternshipModel[] = Internships;
 
     constructor(
         private internship_service: InternshipsService,

@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ViewChildren} from '@angular/core';
 import {NgForOf} from "@angular/common";
-import {InternshipModel} from "../../../models/internship.model";
+import {InternshipModel, Internships} from "../../../models/internship.model";
 import {InternshipCardComponent} from "../../_models/internship-card/internship-card.component";
 import {SearchLoaderComponent} from "../../_models/search-loader/search-loader.component";
 import {FormsModule} from "@angular/forms";
@@ -23,7 +23,7 @@ import {RoutingService} from "../../../services/routing.service";
 })
 export class SearchComponent implements AfterViewInit {
     @ViewChildren('internship') public internship_cards: any;
-    public internships: InternshipModel[] = [];
+    public internships: InternshipModel[] = Internships;
     private adding_new_internships: boolean = false;
 
     public search_name: string = '';
